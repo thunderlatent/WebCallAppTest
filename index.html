@@ -18,5 +18,17 @@
                 window.webkit.messageHandlers['ToApp'].postMessage("Send message to Swift")
             }
         </script>
+        
+        onLogin：<span id="name"></span>
+        <br/>
+        <button onclick="onLogin()">OnLogin</button>
+        <script type="text/javascript">
+     
+            
+            function onLogin() {
+                window.EipJSInterface.onLogin("測試 11010059")
+            }
+        </script>
+        
     </body>
 </html>
