@@ -9,25 +9,36 @@
                     height: 80px;
                     background-color: lightgray;
                 }
+                .wrap{
+                    max-width: 1000px;
+                    margin: 0 auto;
+                }
+
+                #name{
+                    margin-top: 20px;
+                    width: 100%;
+                    text-align: left;
+                    word-wrap: break-word;
+                }
             </style>
     </head>
     <body>
-     
-        <br/>
-        <button onclick="responseSwift()">SendMsg</button>
-        <button onclick="onLogin()">onLogin</button>
-        <button onclick="isBiometricEnableInApp()">isBiometricEnableInApp</button>
-        <button onclick="biometricAuthInApp()">biometricAuthInApp</button>
-        <button onclick="setBiometricEnableInApp()">setBiometricEnableInApp</button>
-        
+        <div class="wrap">
+            <button onclick="responseSwift()">SendMsg</button>
+            <button onclick="onLogin()">onLogin</button>
+            <button onclick="isBiometricEnableInApp()">isBiometricEnableInApp</button>
+            <button onclick="biometricAuthInApp()">biometricAuthInApp</button>
+            <button onclick="setBiometricEnableInApp()">setBiometricEnableInApp</button>
+            <div id="name"></div>
+        </div>
         
         <script type="text/javascript">
-            
+            window.appShareToWeb = credentialLoginToWeb();
+
             function sendMessage(message) {
                 document.getElementById("name").innerHTML = message
                 return "Got it"
             }
-            
             
             <!--          登入時呼叫  -->
             function onLogin() {
@@ -48,6 +59,12 @@
             function setBiometricEnableInApp()
             {
                 window.EipJSInterface.setBiometricEnableInApp({"isEnable": "true", "account":"11010059", "password": "test1234", "accountType": "0"})
+            }
+
+            function credentialLoginToWeb(servcie) {
+                if(servcie){
+                    document.getElementById("name").innerHTML = JSON.stringify(servcie);
+                }
             }
         </script>
         
