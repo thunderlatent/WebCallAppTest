@@ -3,38 +3,22 @@
     <head>
         <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=5.0, maximum-scale=5.0, user-scalable=5,user-scalable=no"/>
+            <style type="text/css">
+                button{
+                    width:120px;
+                    height: 80px;
+                    background-color: lightgray;
+                }
+            </style>
     </head>
     <body>
-        訊息：<span id="name"></span>
+     
         <br/>
-        onLogin：<span id="onLogin"></span>
-        <br/>
-        isBiometricEnableInApp：<span id="isBiometricEnableInApp"></span>
-        <br/>
-        <input type="button" value="連結名稱" style="width:120px;height:40px;font-size:20px  onclick="location.href='要前往的網頁連結'">
-
-
-        <button
-            onclick="responseSwift()">SendMsg;
-            
-            style="width:120px;height:40px;font-size:20px;
-        </button>
-        <button
-            onclick="onLogin()">onLogin
-            style="width:120px;height:40px;font-size:20px
-        </button>
-        <button
-            onclick="isBiometricEnableInApp()">isBiometricEnableInApp
-            style="width:120px;height:40px;font-size:20px
-        </button>
-        <button
-            onclick="biometricAuthInApp(loginType)">biometricAuthInApp
-            style="width:120px;height:40px;font-size:20px
-        </button>
-        <button
-            onclick="setBiometricEnableInApp(true, 11010059, test1234, 0)">setBiometricEnableInApp            style="width:120px;height:40px;font-size:20px
-            
-        </button>
+        <button onclick="responseSwift()">SendMsg</button>
+        <button onclick="onLogin()">onLogin</button>
+        <button onclick="isBiometricEnableInApp()">isBiometricEnableInApp</button>
+        <button onclick="biometricAuthInApp()">biometricAuthInApp</button>
+        <button onclick="setBiometricEnableInApp()">setBiometricEnableInApp</button>
         
         
         <script type="text/javascript">
@@ -44,9 +28,6 @@
                 return "Got it"
             }
             
-            function responseSwift() {
-                window.webkit.messageHandlers['ToApp'].postMessage("Send message to Swift")
-            }
             
             <!--          登入時呼叫  -->
             function onLogin() {
@@ -56,17 +37,17 @@
             <!--          詢問 App 是否啟用生物辨識  -->
             
             function isBiometricEnableInApp() {
-                window.EipJSInterface.isBiometricEnableInApp("")
+                window.EipJSInterface.isBiometricEnableInApp()
             }
             <!--           調用生物辨識 -->
-            function biometricAuthInApp(loginType) {
-                window.EipJSInterface.biometricAuthInApp("0")
+            function biometricAuthInApp() {
+                window.EipJSInterface.biometricAuthInApp({"loginType":"0"})
             }
             
             <!--           設定 App 要不要啟用生物辨識，並且傳遞帳密            -->
-            function setBiometricEnableInApp(isEnable, account, password, accountType)
+            function setBiometricEnableInApp()
             {
-                window.EipJSInterface.setBiometricEnableInApp(true, 11010059, test1234, 0)
+                window.EipJSInterface.setBiometricEnableInApp({"isEnable": "true", "account":"11010059", "password": "test1234", "accountType": "0"})
             }
         </script>
         
